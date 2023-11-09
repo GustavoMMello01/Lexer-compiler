@@ -6,10 +6,8 @@
     a = 3 ;
     b = 3 ;
 
-    result = a + b ;
-    result = a - b ;
-    result = a * b ;
-    result = a / b ;
-
+    if ( a > b ) {
+        result = a + b ;
+    }
 
 }
