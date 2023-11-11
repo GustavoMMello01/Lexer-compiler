@@ -8,12 +8,7 @@ var result ;
     b = 1 ; 
     a = 5 ;
 
-    while ( a > b ) {
-        if ( b > c ) {
-            print ( b ) ;
-        }
-        elif ( c > b ) {
-            print ( c ) ;
-        }
+    for ( a -> b , c ) {
+        print ( a )
     }
 }
