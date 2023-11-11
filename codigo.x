@@ -1,10 +1,12 @@
-{
-    var result ; 
+{ 
+var result ; 
     var a ;
     var b ;
 
     a = 3 ;
     b = 3 ;
 
-    print ( "OLA: ", a ) ;
+    while ( a > b ) {
+        print ( a )
+    }  
 }

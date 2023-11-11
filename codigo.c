@@ -6,5 +6,7 @@ int a;
 int b;
 a = 3.0  ;
 b = 3.0  ;
+while (a > b  ) {
 printf("%f\n", a  );
+}
 }
