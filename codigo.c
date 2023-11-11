@@ -8,12 +8,7 @@ int c;
 c = 2.0  ;
 b = 1.0  ;
 a = 5.0  ;
-while (a > b  ) {
-if (b > c  ) {
-printf("%f\n", b  );
-}
-else if (c > b  ) {
-printf("%f\n", c  );
-}
+for (int a = a; a <= b; a += c  ) {
+printf("%f\n", a  );
 }
 }
