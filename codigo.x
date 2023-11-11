@@ -2,11 +2,18 @@
 var result ; 
     var a ;
     var b ;
+    var c ;
 
-    a = 3 ;
-    b = 3 ;
+    c = 2 ;
+    b = 1 ; 
+    a = 5 ;
 
     while ( a > b ) {
-        print ( a )
-    }  
+        if ( b > c ) {
+            print ( b ) ;
+        }
+        elif ( c > b ) {
+            print ( c ) ;
+        }
+    }
 }
