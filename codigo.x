@@ -8,7 +8,7 @@ var result ;
     b = 1 ; 
     a = 5 ;
 
-    for ( a -> b , c ) {
+    for ( a <- b , c ) {
         print ( a )
     }
 }
