@@ -6,8 +6,5 @@
     a = 3 ;
     b = 3 ;
 
-    if ( a > b ) {
-        result = a + b ;
-    }
-
+    print ( "OLA: ", a ) ;
 }
