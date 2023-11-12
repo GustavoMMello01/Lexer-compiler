@@ -4,11 +4,9 @@ var result ;
     var b ;
     var c ;
 
-    c = 2 ;
-    b = 1 ; 
-    a = 5 ;
+    teste ( a ) ;
+}
 
-    for ( a <- b , c ) {
-        print ( a )
-    }
+func ( a ) {
+    print ( a )
 }
