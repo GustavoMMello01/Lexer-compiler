@@ -4,9 +4,9 @@ var result ;
     var b ;
     var c ;
 
-    teste ( a ) ;
+    teste ( a , b ) ;
 }
 
-func ( a ) {
-    print ( a )
+func ( a , b ) {
+    return a + b
 }
