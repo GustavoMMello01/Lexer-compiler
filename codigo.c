@@ -8,6 +8,6 @@ int a;
 int b;
 a = 2.0  ;
 b = 1.0  ;
-printf("%f\n", a);
+printf("%s %f\n", "OLas", a);
 teste(a);
 }
