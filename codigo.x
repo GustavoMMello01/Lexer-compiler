@@ -1,12 +1,15 @@
-{ 
-var result ; 
-    var a ;
-    var b ;
-    var c ;
-
-    teste ( a , b ) ;
+func teste ( a )
+{
+    print ( a ) ;
 }
 
-func ( a , b ) {
-    return a + b
+main 
+{  
+    var a ;
+    var b ;
+    
+    a = 2 ;
+    b = 1 ;
+
+    teste ( a ) ;
 }

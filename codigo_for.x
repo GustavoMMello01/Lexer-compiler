@@ -10,7 +10,7 @@ var result ;
 
     for ( a <- b , c ) {
         print ( a )
-    }
+    } ;
 
     for ( a -> b , c ) {
         print ( a )
