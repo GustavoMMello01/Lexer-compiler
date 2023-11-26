@@ -11,7 +11,7 @@ main
     a = 2 ;
     b = 1 ;
 
-    print ( "OLas" , a ) ;
+    print ( a ) ;
 
     teste ( a ) ;
 }
