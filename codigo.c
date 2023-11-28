@@ -9,7 +9,12 @@ float b;
 a = 2.0  ;
 b = 1.0  ;
 if (a > b  ) {
+float c;
+c = 2.0  ;
 printf("%f\n", a);
+}
+else if (b == a  ) {
+printf("%f\n", b);
 }
 else if (b == a  ) {
 printf("%f\n", b);

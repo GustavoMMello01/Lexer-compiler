@@ -13,7 +13,12 @@ main
 
     if ( a > b ) 
     {
+        var c ;
+        c = 2.0 ;
         print ( a )
+    }
+    elif ( b == a ) {
+        print ( b )
     }
     elif ( b == a ) {
         print ( b )
