@@ -3,6 +3,13 @@
 Este projeto é um compilador  desenvolvido para processar uma linguagem de programação original, baseada em python mas com algumas particularidades que serão abordadas no decorrer desse readme. O compilador é composto por duas partes principais: o analisador léxico (lexer) e o analisador sintático (parser).
 
 
+- Bruno Cesar de Almeida Ribeiro - RA: 210570
+- Gustavo Moreira de Mello - RA: 180525
+- Kaetano Cesar Apolinario Rodrigues - RA: 190157
+- Leonardo José Ferreira Corrêa - RA: 210726
+- Rafael de Proença Rossi - RA: 171012
+
+
 ## 📝 Analisador Léxico (Lexer)
 
 Descrição:
