@@ -22,5 +22,11 @@ printf("%f\n", b);
 else {
 printf("%f\n", a);
 }
+for (float a = a; a >= b; a -= c  ) {
+printf("%f\n", a);
+}
+for (float a = a; a <= b; a += c  ) {
+printf("%f\n", a);
+}
 teste(a);
 }

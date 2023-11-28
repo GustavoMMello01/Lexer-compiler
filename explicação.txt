@@ -1,5 +1,0 @@
-O PARSER é uma estrutura básica para um parser de uma linguagem simplificada, com base no padrão "recursive descent parser". 
-
-se achar algo que ja esta na tablea de simbolos -> erro semantico
-por exemplo, uma variavel ja declarada e é declarada de novo -> erro semantico
-

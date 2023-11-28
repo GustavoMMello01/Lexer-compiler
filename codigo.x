@@ -27,6 +27,14 @@ main
         print ( a )
     } 
 
+    for ( a <- b , c ) {
+        print ( a )
+    } 
+
+    for ( a -> b , c ) {
+        print ( a )
+    } 
+
     teste ( a )
 
 }

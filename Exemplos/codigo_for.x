@@ -1,18 +1,20 @@
-{ 
-var result ; 
-    var a ;
+main 
+{  
+    var a ; 
     var b ;
-    var c ;
+    
+    a = 2.0 ;
+    b = 1.0 ;
 
-    c = 2 ;
-    b = 1 ; 
-    a = 5 ;
+    var c ; 
+    c = 3.0 ;
 
     for ( a <- b , c ) {
         print ( a )
-    } ;
+    } 
 
     for ( a -> b , c ) {
         print ( a )
-    }
+    } 
+
 }
