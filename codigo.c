@@ -7,9 +7,12 @@ c = 2.0  ;
 d = 1.0  ;
 a = c  + d  ;
 printf("%f\n", a);
-for (int a = a; a >= c; a -= d  ) {
+for (float a = a; a >= c; a -= d  ) {
 printf("%f\n", a);
 }
+}
+void teste2(float a) {
+printf("%f\n", a);
 }
 int main() {
 float a;
