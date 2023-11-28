@@ -97,6 +97,42 @@ arquivo = open('meu_programa.x','r')
 - Você pode abrir este arquivo para ver o código C resultante da compilação do seu programa.
 
 
-📜 Licença
-MIT License
+# 📖 Explicação do Lexer
+O lexer, também conhecido como analisador léxico, é a primeira fase do processo de compilação. Ele é responsável por converter o código-fonte em uma sequência de tokens. Cada token representa um elemento do código, como um identificador, uma palavra-chave, um operador, um valor numérico, etc.
 
+🔍 Tipos de Tokens
+No lexer do nosso compilador, definimos vários tipos de tokens, cada um representando diferentes elementos do código:
+
+- T_KEYWORD: Representa palavras-chave.
+- T_OP: Operadores como =, +, -, *, /, ^.
+- T_FLOAT: Números de ponto flutuante.
+- T_STRING: Strings literais.
+- T_ID: Identificadores (nomes de variáveis ou funções).
+- T_EOF: Fim do arquivo.
+- T_DELIMITER: Delimitadores, como ponto e vírgula (;).
+- T_BLOCK: Blocos de código, delimitados por chaves { e }.
+- T_PARA: Parênteses ( e ).
+- T_VAR_TYPE: Tipo de variável (por exemplo, var).
+- T_IF, T_ELIF, T_ELSE: Estruturas de controle if, elif e else.
+- T_OP_COMP: Operadores de comparação como ==, !=, <, >, <=, >=.
+- T_PRINT: Palavra-chave para impressão.
+- T_WHILE, T_FOR: Estruturas de loop while e for.
+- T_ARROW_UP, T_ARROW_DOWN: Símbolos de seta para cima e para baixo, usados em loops for.
+- T_COMMA: Vírgula.
+- T_FUNC: Palavra-chave para definição de função.
+- T_RETURN: Palavra-chave para retorno de função.
+- T_MAIN: Palavra-chave para o método principal.
+
+## 🏗️ Classe Token
+A classe Token é usada para criar objetos token com um tipo e um valor. Cada token é uma instância desta classe, ajudando na verificação dos tokens durante a análise sintática.
+
+## 📐 Funções de Análise Léxica
+Funções específicas são usadas para reconhecer diferentes tipos de tokens:
+
+- **afd_float**: Reconhece números de ponto flutuante.
+- **afd_string**: Reconhece strings literais.
+- **afd_identificador**: Reconhece identificadores (variáveis e nomes de funções).
+- **afd_return**, **afd_print**, **afd_if**, **afd_elif**, **afd_else**, **afd_delimiter**,**afd_block**, **afd_var_type**, **afd_para**: Reconhecem palavras-chave e símbolos específicos.
+- **afd_principal**: Função central que determina o tipo de um token com base em seu valor, chamando as funções acima conforme necessário.
+
+Essas funções ajudam o lexer a categorizar cada parte do código-fonte em tokens, preparando-os para a próxima fase de compilação - a análise sintática.
