@@ -8,8 +8,8 @@ main
     var a ;
     var b ;
     
-    a = 2 ;
-    b = 1 ;
+    a = 2.0 ;
+    b = 1.0 ;
 
     print ( "OLas" , a ) ;
 
