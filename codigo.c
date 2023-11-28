@@ -1,17 +1,6 @@
 #include <stdio.h>
 #include <math.h>
 void teste(float a) {
-float d;
-float c;
-c = 2.0  ;
-d = 1.0  ;
-a = c  + d  ;
-printf("%f\n", a);
-for (float a = a; a >= c; a -= d  ) {
-printf("%f\n", a);
-}
-}
-void teste2(float a) {
 printf("%f\n", a);
 }
 int main() {
@@ -19,6 +8,14 @@ float a;
 float b;
 a = 2.0  ;
 b = 1.0  ;
-printf("%s %f\n", "OLas", a);
+if (a > b  ) {
+printf("%f\n", a);
+}
+else if (b == a  ) {
+printf("%f\n", b);
+}
+else {
+printf("%f\n", a);
+}
 teste(a);
 }
