@@ -10,11 +10,11 @@ main
     c = 3.0 ;
 
     for ( a <- b , c ) {
-        print ( a )
+        print ( a ) ;
     } 
 
     for ( a -> b , c ) {
-        print ( a )
+        print ( a ) ;
     } 
 
 }

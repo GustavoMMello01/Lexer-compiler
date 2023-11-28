@@ -10,8 +10,8 @@ func teste ( a )
     print ( a ) ;
 
     for ( a <- c , d ) {
-        print ( a )
-    } ;
+        print ( a ) ;
+    } 
 }
 
 func teste2 ( a )
@@ -30,4 +30,6 @@ main
     print ( "OLas" , a ) ;
 
     teste ( a ) ;
+
+    teste2 ( a ) ;
 }

@@ -15,5 +15,8 @@ var result ;
         elif ( c > b ) {
             print ( c ) ;
         }
+        else {
+            print ( b ) ;
+        }
     }
 }

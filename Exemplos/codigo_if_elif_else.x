@@ -13,13 +13,13 @@ main
 
     if ( a > b ) 
     {
-        print ( a )
+        print ( a ) ;
     }
     elif ( b == a ) {
-        print ( b )
+        print ( b ) ;
     }
     else {
-        print ( a )
+        print ( a ) ;
     } 
 
     teste ( a )
