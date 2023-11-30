@@ -1,12 +1,12 @@
-{ 
-var result ; 
+main { 
+    var result ; 
     var a ;
     var b ;
     var c ;
 
-    c = 2 ;
-    b = 1 ; 
-    a = 5 ;
+    c = 2.0 ;
+    b = 1.0 ; 
+    a = 5.0 ;
 
     while ( a > b ) {
         if ( b > c ) {
