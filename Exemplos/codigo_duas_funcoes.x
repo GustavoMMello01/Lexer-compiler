@@ -6,7 +6,7 @@ func teste ( a )
     c = 2.0 ;
     d = 1.0 ;
 
-    a = c + d ;
+    a = c ;
     print ( a ) ;
 
     for ( a <- c , d ) {
