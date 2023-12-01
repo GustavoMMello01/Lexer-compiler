@@ -278,6 +278,64 @@ def instruction(self):
             self.use(T_DELIMITER, ";") # Confirma o token ';'
 ```
 
+# 🗃️ Gerenciamento de Escopo
+O gerenciamento de escopo é uma parte crucial de qualquer compilador. No nosso compilador, a classe **Scope** é usada para gerenciar os símbolos (variáveis e funções) e seus respectivos escopos. Cada instância da classe **Scope** representa um escopo no código, podendo ter um escopo pai (se for um escopo interno) e contendo um dicionário de símbolos declarados nesse escopo.
+
+## Classe Scope
+
+```python	
+class Scope():
+    def __init__(self, parent=None):
+        self.symbols = {}
+        self.parent = parent
+
+    def doesSymbolExist(self, symbol):
+        if symbol in self.symbols:
+            return self
+        if self.parent is not None:
+            return self.parent.doesSymbolExist(symbol)
+        return None
+
+    def addSymbol(self, symbol):
+        print("Added Symbol: ", symbol)
+        self.symbols[symbol] = None
+        print("Symbols: ", self.symbols)
+```
+
+- **__init__**: Inicializa um novo escopo com um dicionário vazio de símbolos e um escopo pai opcional.
+- **doesSymbolExist**: Verifica se um símbolo já foi declarado neste escopo ou em um dos escopos pai.
+- **addSymbol**: Adiciona um novo símbolo ao escopo atual.
+
+## Uso da Classe Scope no Compilador
+A classe Scope é usada no compilador para gerenciar a declaração e atribuição de variáveis. Por exemplo, na função declare_or_assign_variable do analisador sintático, utilizamos a classe Scope para verificar se uma variável já foi declarada e para adicionar novas variáveis ao escopo atual.
+
+**Exemplo de Função declare_or_assign_variable**
+
+```python
+def declare_or_assign_variable(self):
+    type = self.token_atual.valor
+    self.use(T_VAR_TYPE, "var")
+    name = self.token_atual.valor
+    self.use(T_ID)
+
+    # Verifica se a variável já foi declarada
+    if self.currentScope.doesSymbolExist(name):
+        raise Exception(f"Erro semantico. Simbolo {name} foi declarado mais de uma vez.")
+
+    if self.peek().tipo == T_OP and self.peek().valor == '=':
+        self.use(T_OP, '=')
+        value, str_expr = self.expr()
+        self.currentScope.symbols[name] = value # Adiciona a variável ao escopo atual
+        self.ir.append(f"float {name} = {str_expr};")
+    else:
+        self.currentScope.addSymbol(name)
+        self.ir.append(f"float {name};")
+        self.use(T_DELIMITER, ';')
+```
+
+Neste exemplo, a função declare_or_assign_variable lida com a declaração de novas variáveis e a atribuição de valores a elas. Ela utiliza a instância atual da classe Scope (self.currentScope) para verificar se a variável já existe e para adicionar a variável ao escopo atual.
+
+
 # 🧩 Geração da Representação Intermediária (IR)
 
 
@@ -435,82 +493,10 @@ int main() {
 
 Esta organização do código é crucial para evitar erros de "função não declarada" durante a compilação do código C gerado. Garante que todas as funções sejam conhecidas pelo compilador C no momento em que são chamadas, seguindo a abordagem de "declaração antes do uso" da linguagem C.
 
-# 📚 Tabela de Símbolos
-
-A tabela de símbolos é uma estrutura de dados que armazena informações sobre os símbolos encontrados no código-fonte. Um símbolo pode ser uma variável, uma função, uma constante, etc. A tabela de símbolos é usada para verificar se um símbolo já foi declarado, se ele está sendo usado corretamente, etc.
-
-## 🏗️ Estrutura da Tabela de Símbolos
-
-A tabela de símbolos é implementada como um dicionário, onde cada símbolo é uma chave e o valor é o tipo do símbolo. Por exemplo, se a variável x for declarada, ela será adicionada à tabela de símbolos como:
-
-```python
-def __init__(self, tokens):
-        self.tokens = tokens # Lista de tokens
-        self.pos = -1 # Posição atual
-        self.token_atual = None # Token atual
-        self.symbol_table = {} # Tabela de símbolos
-        self.ir = [] # Representação intermediária
-        
-        self.proximo() # Avança para o próximo token
-
-def declare_or_assign_variable(self):
-    name = self.token_atual.valor
-    self.use(T_ID)
-
-    # Verifica se a variável já foi declarada
-    if name in self.symbol_table:
-        raise Exception(f"Erro semântico. Símbolo '{name}' foi declarado mais de uma vez.")
-
-    # Adiciona a variável à tabela de símbolos 
-    self.symbol_table[name] = None 
-```
-
-No exemplo acima:
-
-- **Inicialização**: A tabela de símbolos é inicializada no construtor da classe Parser.
-- **Declaração de Variável**: Ao declarar uma variável, primeiro verifica-se se já existe na tabela. Se já existir, é lançada uma exceção para evitar redeclarações.
-- **Armazenamento**: A variável é então adicionada à tabela de símbolos com um valor inicial (neste caso, None).
-
-## 🔑 Importância na Compilação
-
-A tabela de símbolos é usada para verificar se um símbolo já foi declarado, se ele está sendo usado corretamente, etc. Por exemplo, se uma variável é declarada mais de uma vez, um erro semântico é gerado. Da mesma forma, se uma variável é usada sem ser declarada, um erro semântico é gerado.
-
-```python	
-# Verifica se o símbolo já foi declarado
-if name not in self.symbol_table:
-    raise Exception(f"Erro semantico. Simbolo {name} nao foi declarado.") # Gera um erro semântico
-```
 
 # 📁 Pasta de Exemplos no Compilador
 
 No repositório do compilador, existe uma pasta chamada **exemplos**, que contém diversos códigos de exemplo. Estes exemplos demonstram o uso de várias estruturas da linguagem.
-
-## 🌟 Lista de Exemplos Disponíveis
-
-**1. codigo_duas_funcoes.x:**
-
-- Ilustra o uso de duas funções e a chamada de uma função dentro da outra.
-- Exemplifica o uso de loops for e declaração de variáveis.
-
-**2. codigo_for.x:**
-
-- Demonstra a utilização de loops for com incremento e decremento.
-- Mostra a declaração e a atribuição de variáveis.
-
-**3. codigo_if_elif_else.x:**
-
-- Exibe o uso de estruturas condicionais if, elif e else.
-- Inclui a definição e a chamada de uma função.
-
-**4. codigo_while.x:**
-
-- Apresenta o uso do loop while com condições aninhadas.
-- Usa condicionais if e elif dentro do loop.
-
-**5. codigo2.x:**
-
-- Mostra o uso de condicionais if, elif e else.
-- Inclui funções com parâmetros e retorno de valores.
 
 # 💡 Como Usar os Exemplos
 
@@ -520,7 +506,7 @@ Para testar os exemplos, o usuário pode simplesmente selecionar um dos arquivos
 2. Selecionar o Arquivo de Exemplo: Altere a linha de código que abre o arquivo fonte para apontar para um dos exemplos. Por exemplo:
 
 ```python
-arquivo = open('exemplos/codigo_duas_funcoes.x', 'r')
+arquivo = open('exemplos/Exemplos Corretos/codigo_duas_funcoes.x', 'r')
 ```
 
 3. Executar o Compilador: Execute o compilador e verifique o código C gerado.
